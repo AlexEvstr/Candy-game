@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Assets.Match.Scripts.UI.View;
 
 namespace Assets.Match.Scripts.Gameplay
 {
@@ -13,9 +12,6 @@ namespace Assets.Match.Scripts.Gameplay
         [SerializeField] private GoalController _goalController;
         [SerializeField] private MoveController _moveController;
         [SerializeField] private StarController _starController;
-        [SerializeField] private GoalView _goalView;
-
-        [SerializeField] private GameObject[] _goalObject;
 
 #endregion
 
@@ -51,54 +47,10 @@ namespace Assets.Match.Scripts.Gameplay
             }
         }
 
-        public void CheckNumberOfGoals()
-        {
-            if(_goalController.CounterOne <= 0)
-            {
-                _goalObject[0].SetActive(false);
-            }
-
-            if (_goalController.CounterTwo <= 0)
-            {
-                _goalObject[1].SetActive(false);
-            }
-
-            if (_goalController.CounterThree <= 0)
-            {
-                _goalObject[2].SetActive(false);
-            }
-        }
-
-        public void MatchWithGoal(BlockController block)
-        {
-            if (block.Type == _goalView.goals[0].GetComponent<BlockController>().Type)
-            {
-                _goalController.ChangeGoals(_goalController.CounterOne - 1, 1);
-            }
-
-            if (block.Type == _goalView.goals[1].GetComponent<BlockController>().Type)
-            {
-                _goalController.ChangeGoals(_goalController.CounterTwo - 1, 2);
-            }
-
-            if (block.Type == _goalView.goals[2].GetComponent<BlockController>().Type)
-            {
-                _goalController.ChangeGoals(_goalController.CounterThree - 1, 3);
-            }
-
-            CheckNumberOfGoals();
-        }
-
         public void Restart()
         {
             _scoreController.ChangeScore(0);           
             LevelControl();
-            CheckNumberOfGoals();
-
-            for(int i = 0; i < _goalObject.Length; i++)
-            {
-                _goalObject[i].SetActive(true);
-            }
         }
 
         public void LevelControl()

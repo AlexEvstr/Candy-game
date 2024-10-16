@@ -16,18 +16,18 @@ MonoBehaviour:
   level:
     isConfigured: 1
     xSize: 6
-    ySize: 7
-    maxScore: 2000
+    ySize: 8
+    maxScore: 200
     isObstacleLevel: 0
     isBonusLevel: 0
     obstaclesOnLevel:
       type: 0
       NumberOfObstacles: 0
       position: []
-    totalStar: 0
+    totalStar: 1
   move:
-    maxMove: 20
+    maxMove: 25
   goal:
-    valueOfGoalOne: 15
-    valueOfGoalTwo: 10
-    valueOfGoalThree: 20
+    valueOfGoalOne: 100
+    valueOfGoalTwo: 100
+    valueOfGoalThree: 100

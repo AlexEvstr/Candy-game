@@ -133,7 +133,6 @@ namespace Assets.Match.Scripts.Gameplay
                     _audioEffectsGame.PlayBombSound();
                     foreach (BlockController block in ActivateBomb(allBlocks, matchedBlock.GetX, matchedBlock.GetY))
                     {
-                        _gameController.MatchWithGoal(block);
                         _boardManager.DestroyBlock(block);
                         explosion = Instantiate(_explosion, block.transform.position, Quaternion.identity);
                         Destroy(explosion, 2f);
@@ -146,7 +145,6 @@ namespace Assets.Match.Scripts.Gameplay
                     _audioEffectsGame.PlayRocketSound();
                     foreach (BlockController block in ActivateRocket(allBlocks, matchedBlock.GetY))
                     {
-                        _gameController.MatchWithGoal(block);
                         _boardManager.DestroyBlock(block);
                          explosion = Instantiate(_explosion, block.transform.position, Quaternion.identity);
                         Destroy(explosion, 2f);

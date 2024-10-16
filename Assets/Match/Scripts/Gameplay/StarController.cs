@@ -28,9 +28,10 @@ namespace Assets.Match.Scripts.Gameplay
         }
 
         public void StarIncrease(int minStar)
-        {           
-            NumOfStar = minStar;
-            StarChange?.Invoke();
+        {
+            //NumOfStar = minStar;
+            //StarChange?.Invoke();
+            Debug.Log("win");
         }
 
         public void ResetStar()

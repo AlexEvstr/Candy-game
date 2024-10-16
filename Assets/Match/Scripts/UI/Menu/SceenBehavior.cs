@@ -25,7 +25,6 @@ namespace Assets.Match.Scripts.UI.Menu
 
         private void OnEnable()
         {
-            _pauseButton.onClick.AddListener(_pausePanel.PauseGame);
             _moveController.MovesChange += GameOver;
             _goalController.GoalChange += GoalReached;
         }
@@ -59,7 +58,6 @@ namespace Assets.Match.Scripts.UI.Menu
 
         private void OnDisable()
         {
-            _pauseButton.onClick.RemoveListener(_pausePanel.PauseGame);
             _moveController.MovesChange -= GameOver;
             _goalController.GoalChange -= GoalReached;
         }

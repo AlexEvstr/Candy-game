@@ -38,9 +38,9 @@ namespace Assets.Match.Scripts.Gameplay
 
         public void ChangeGoals(int newGoal, int counter)
         {
-            if(counter == 1)
+            if (counter == 1)
             {
-                CounterOne = newGoal;          
+                CounterOne = newGoal;
             }
             if (counter == 2)
             {

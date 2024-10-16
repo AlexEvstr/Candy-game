@@ -36,10 +36,6 @@ namespace Assets.Match.Scripts.UI.View
                 {
                     _stars[i].sprite = _fullStar;
                 }
-                else
-                {
-                    _stars[i].sprite = _emptyStar;
-                }
             }
         }
 

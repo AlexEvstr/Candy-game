@@ -268,37 +268,33 @@ namespace Assets.Match.Scripts.Gameplay
                 {
                     _bonusController.BonusValidation(matchedTile, _boardScriptableObject.Blocks);
                 }
-                ClearSelectedTiles();
+                //ClearSelectedTiles();
             }
             else if (TotalMatch >= 3)
             {
                 _gameController.CountingScore(TotalMatch);
                 _selectedBlocks.Sort((p1, p2) => p1.GetY.CompareTo(p2.GetY));
-
                 foreach (BlockController matchedTile in _selectedBlocks)
                 {
-                    _gameController.MatchWithGoal(matchedTile);
 
                     matchedTile.DestroyObstacle(matchedTile);
-
                     DestroyBlock(matchedTile);
-
                 }
-
+                //ClearSelectedTiles();
                 _moveController.NumberOfMoves(_moveController.TotalMove - 1);
-                ClearSelectedTiles();
+                
             }
             else
             {
-                ClearSelectedTiles();
+                
             }
-
+            ClearSelectedTiles();
             SearchEmptyTile();
 
-            if (_levelConfig.level.isBonusLevel == true)
-            {
-                _bonusController.GetBonus(TotalMatch);              
-            }
+            //if (_levelConfig.level.isBonusLevel == true)
+            //{
+            //    _bonusController.GetBonus(TotalMatch);              
+            //}
 
             _isDrop = false;
 
@@ -346,6 +342,7 @@ namespace Assets.Match.Scripts.Gameplay
             {
                 Debug.LogError(exception.Message);
             }
+            _isDrop = false;
 
         }
 

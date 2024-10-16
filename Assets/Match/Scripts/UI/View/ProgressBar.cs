@@ -51,19 +51,7 @@ namespace Assets.Match.Scripts.UI.View
         {
             GameObject particle;
             
-            if (fillAmount >= 0.3f && fillAmount < 0.6f && _starController.NumOfStar == 0 )
-            { 
-                _starController.StarIncrease(_starController.NumOfStar = 1);
-                particle = Instantiate(_starParticle, _starsTransfom[0].position, Quaternion.identity);
-                Destroy(particle, 3f);
-            }
-            if (fillAmount >= 0.6f && fillAmount < 0.9f && _starController.NumOfStar == 1)
-            {
-                _starController.StarIncrease(_starController.NumOfStar = 2);
-                particle = Instantiate(_starParticle, _starsTransfom[1].position, Quaternion.identity);
-                Destroy(particle, 3f);
-            }
-            if (fillAmount >= 0.95f && _starController.NumOfStar == 2)
+            if (fillAmount >= 0.95f)
             {
                 _starController.StarIncrease(_starController.NumOfStar = 3);
                 particle = Instantiate(_starParticle, _starsTransfom[2].position, Quaternion.identity);

@@ -52,7 +52,7 @@ namespace Assets.Match.Scripts.UI.Menu
         private void ToNextLevel()
         {
             _buttonAudioEffect.PlayClickSound();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         private async void ToStartMenu()
@@ -80,13 +80,13 @@ namespace Assets.Match.Scripts.UI.Menu
                 _gameMenuAnimation.ForVictory();
                 CheckNumberOfStars();
                 _starController.SaveStarData();
-               
+
             }
             catch (System.Exception exception)
             {
                 Debug.LogError(exception.Message);
                 throw;
-            }          
+            }
         }
 
         private void CheckNumberOfStars()

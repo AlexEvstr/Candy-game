@@ -34,7 +34,6 @@ namespace Assets.Match.Scripts.UI.Menu
         public void PauseGame()
         {
             _buttonAudioEffect.PlayClickSound();
-            _gameMenuAnimation.ForPause();
             _gamePanel.SetActive(_isOpen);
             _boardPanel.SetActive(_isOpen);
         }

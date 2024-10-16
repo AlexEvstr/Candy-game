@@ -7,7 +7,6 @@ namespace Assets.Match.Scripts.UI.View
 
     public class MoveView : MonoBehaviour       
     {
-        //[SerializeField] private TextMeshProUGUI _move;
         [SerializeField] private TextMeshPro _move;
         [SerializeField] private MoveController _moveController;
 
@@ -25,11 +24,11 @@ namespace Assets.Match.Scripts.UI.View
         {
             if(_moveController.TotalMove > 0)
             {
-                _move.text = $"Move: {_moveController.TotalMove}";  
+                _move.text = $"{_moveController.TotalMove}";  
             }
             else
             {
-                _move.text = " ";
+                _move.text = "0";
             }     
         }
 
