@@ -88,13 +88,11 @@ namespace Assets.Match.Scripts.UI.Menu
 
                 _gameMenuAnimation.ForVictory();
 
-                //CheckNumberOfStars();
-
                 _starController.SaveStarData();
             }
             catch (System.Exception exception)
             {
-                Debug.LogError($"Ошибка в VictoryState: {exception.Message}");
+                Debug.LogError($"VictoryState: {exception.Message}");
             }
         }
 

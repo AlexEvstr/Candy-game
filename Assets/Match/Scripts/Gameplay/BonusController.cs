@@ -15,6 +15,7 @@ namespace Assets.Match.Scripts.Gameplay
         [SerializeField] private ObjectsAnimation _objectsAnimation;
         [SerializeField] private BoardScriptableObject _board;
         [SerializeField] private GameController _gameController;
+        [SerializeField] private GameObject[] _bonusFrames;
 
         [SerializeField] private GameObject _explosion;
 
@@ -40,6 +41,14 @@ namespace Assets.Match.Scripts.Gameplay
             isBombActive = false;
             isEraserActive = false;
             ClearHighlightedBlocks();
+            if (isRocketActive)
+            {
+                _bonusFrames[2].SetActive(true);
+                _bonusFrames[1].SetActive(false);
+                _bonusFrames[0].SetActive(false);
+            }
+            else
+                _bonusFrames[2].SetActive(false);
         }
 
         public void ToggleBombMode()
@@ -48,6 +57,14 @@ namespace Assets.Match.Scripts.Gameplay
             isRocketActive = false;
             isEraserActive = false;
             ClearHighlightedBlocks();
+            if (isBombActive)
+            {
+                _bonusFrames[0].SetActive(true);
+                _bonusFrames[1].SetActive(false);
+                _bonusFrames[2].SetActive(false);
+            }
+            else
+                _bonusFrames[0].SetActive(false);
         }
 
         public void ToggleEraserMode()
@@ -56,6 +73,14 @@ namespace Assets.Match.Scripts.Gameplay
             isRocketActive = false;
             isBombActive = false;
             ClearHighlightedBlocks();
+            if (isEraserActive)
+            {
+                _bonusFrames[1].SetActive(true);
+                _bonusFrames[0].SetActive(false);
+                _bonusFrames[2].SetActive(false);
+            }
+            else
+                _bonusFrames[1].SetActive(false);
         }
 
         public void HandleBonusSelection(BlockController selectedBlock)
@@ -202,6 +227,10 @@ namespace Assets.Match.Scripts.Gameplay
                 block.Unselect();
             }
             highlightedBlocks.Clear();
+            foreach (var item in _bonusFrames)
+            {
+                item.SetActive(false);
+            }
         }
     }
 }

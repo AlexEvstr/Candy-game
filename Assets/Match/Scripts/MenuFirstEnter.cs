@@ -43,6 +43,7 @@ public class MenuFirstEnter : MonoBehaviour
         _ava_11.SetActive(false);
         _ava_00.SetActive(true);
         _okay.interactable = true;
+        PlayerPrefs.SetInt("AvatarGame", 0);
     }
 
     private void SecondAvaBtn()
@@ -50,5 +51,6 @@ public class MenuFirstEnter : MonoBehaviour
         _ava_00.SetActive(false);
         _ava_11.SetActive(true);
         _okay.interactable = true;
+        PlayerPrefs.SetInt("AvatarGame", 1);
     }
 }
