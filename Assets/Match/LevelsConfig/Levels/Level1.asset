@@ -26,7 +26,7 @@ MonoBehaviour:
       position: []
     totalStar: 3
   move:
-    maxMove: 5
+    maxMove: 25
   goal:
     valueOfGoalOne: 100
     valueOfGoalTwo: 100

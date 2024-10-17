@@ -1635,8 +1635,6 @@ MonoBehaviour:
   _objectsAnimation: {fileID: 885441606}
   _board: {fileID: 11400000, guid: c89279ab0b29fd4499a561289d047f11, type: 2}
   _gameController: {fileID: 885441599}
-  _bombPrefab: {fileID: 8244664802855823535, guid: a5a3e84f71183f74ba5573a8da3c1e62, type: 3}
-  _rocketPrefab: {fileID: 6071451326438718115, guid: 4ea31cdf0b031894e8b270b39db3e602, type: 3}
   _explosion: {fileID: 355741858412787734, guid: 71624d2528e55664dae7efb64ec37660, type: 3}
 --- !u!114 &495482194
 MonoBehaviour:
@@ -2647,7 +2645,6 @@ GameObject:
   - component: {fileID: 885441606}
   - component: {fileID: 885441596}
   - component: {fileID: 885441601}
-  - component: {fileID: 885441607}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -2784,19 +2781,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioEffectsGame: {fileID: 786310507}
---- !u!114 &885441607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 885441595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca4a03d6453d148ddb1cae7ebcee08c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bonusController: {fileID: 495482193}
 --- !u!1 &886422779
 GameObject:
   m_ObjectHideFlags: 0
@@ -3927,9 +3911,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 885441607}
-        m_TargetAssemblyTypeName: BonusButton, Assembly-CSharp
-        m_MethodName: OnBombButtonPressed
+      - m_Target: {fileID: 495482193}
+        m_TargetAssemblyTypeName: Assets.Match.Scripts.Gameplay.BonusController,
+          Assembly-CSharp
+        m_MethodName: ToggleBombMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5526,9 +5511,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 885441607}
-        m_TargetAssemblyTypeName: BonusButton, Assembly-CSharp
-        m_MethodName: OnRocketButtonPressed
+      - m_Target: {fileID: 495482193}
+        m_TargetAssemblyTypeName: Assets.Match.Scripts.Gameplay.BonusController,
+          Assembly-CSharp
+        m_MethodName: ToggleRocketMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -44,7 +44,7 @@ namespace Assets.Match.Scripts.Gameplay
         {
             if(_moveController.TotalMove > 0)
             {
-                _scoreController.ChangeScore(_scoreController.Counter + _moveController.TotalMove * 100);
+                _scoreController.ChangeScore(_scoreController.Counter + _moveController.TotalMove * 20);
             }
         }
 

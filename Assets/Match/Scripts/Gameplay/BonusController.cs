@@ -1,16 +1,13 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using DG.Tweening;
 using Assets.Match.Scripts.Audio;
-using Assets.Match.Scripts.Enum;
 using Assets.Match.Scripts.Models;
 using Assets.Match.Scripts.UI.Animations;
 using Assets.Match.Scripts.ScriptableObjects;
 
 namespace Assets.Match.Scripts.Gameplay
 {
-
     public class BonusController : MonoBehaviour
     {
         [SerializeField] private BoardManager _boardManager;
@@ -19,89 +16,73 @@ namespace Assets.Match.Scripts.Gameplay
         [SerializeField] private BoardScriptableObject _board;
         [SerializeField] private GameController _gameController;
 
-        [SerializeField] private GameObject _bombPrefab;
-        [SerializeField] private GameObject _rocketPrefab;  // Ракета = шоколадка
-
         [SerializeField] private GameObject _explosion;
 
         private Camera _camera;
-
-        // Флаги для отслеживания активированных бонусов
         private bool isRocketActive = false;
         private bool isBombActive = false;
+
+        private List<BlockController> highlightedBlocks = new List<BlockController>();
 
         private void Awake()
         {
             _camera = Camera.main;
         }
 
-        // Проверяем активен ли режим ракеты
-        public bool IsRocketModeActive()
-        {
-            return isRocketActive;
-        }
+        public bool IsRocketModeActive() => isRocketActive;
+        public bool IsBombModeActive() => isBombActive;
 
-        // Проверяем активен ли режим бомбы
-        public bool IsBombModeActive()
+        public void ToggleRocketMode()
         {
-            return isBombActive;
-        }
-
-        // Активация режима ракеты
-        public void ActivateRocketMode()
-        {
-            isRocketActive = true;
-            isBombActive = false;  // Деактивируем бомбу, если активна
-            Debug.Log("Режим ракеты активирован. Выберите конфету.");
-        }
-
-        // Деактивация режима ракеты
-        public void DeactivateRocketMode()
-        {
-            isRocketActive = false;
-            Debug.Log("Режим ракеты деактивирован.");
-        }
-
-        // Активация режима бомбы
-        public void ActivateBombMode()
-        {
-            isBombActive = true;
-            isRocketActive = false;  // Деактивируем ракету, если активна
-            Debug.Log("Режим бомбы активирован. Выберите конфету.");
-        }
-
-        // Деактивация режима бомбы
-        public void DeactivateBombMode()
-        {
+            isRocketActive = !isRocketActive;
             isBombActive = false;
-            Debug.Log("Режим бомбы деактивирован.");
+            ClearHighlightedBlocks();
         }
 
-        // Метод для обработки выбора конфеты
+        public void ToggleBombMode()
+        {
+            isBombActive = !isBombActive;
+            isRocketActive = false;
+            ClearHighlightedBlocks();
+        }
+
         public void HandleBonusSelection(BlockController selectedBlock)
         {
-            Debug.Log("noneeee");
             if (isRocketActive)
             {
-                Debug.Log("rocket");
                 ActivateRocketBonus(selectedBlock);
                 _gameController.BonusForMoves();
-                isRocketActive = false; // Сбрасываем флаг
+                isRocketActive = false;
             }
             else if (isBombActive)
             {
-                Debug.Log("bomb");
                 ActivateBombBonus(selectedBlock);
                 _gameController.BonusForMoves();
-                isBombActive = false; // Сбрасываем флаг
+                isBombActive = false;
+            }
+            ClearHighlightedBlocks();
+        }
+
+        public void HighlightBlocks(BlockController selectedBlock)
+        {
+            ClearHighlightedBlocks();
+            if (isRocketActive)
+            {
+                highlightedBlocks = ActivateRocket(_board.Blocks, selectedBlock.GetX);
+            }
+            else if (isBombActive)
+            {
+                highlightedBlocks = ActivateBomb(_board.Blocks, selectedBlock.GetX, selectedBlock.GetY);
+            }
+
+            foreach (var block in highlightedBlocks)
+            {
+                block.SelectTile();
             }
         }
 
-        // Метод для активации бонуса "ракета" (шоколадка)
         private void ActivateRocketBonus(BlockController selectedBlock)
         {
-            Debug.Log($"Активирован бонус ракета (шоколадка) для столбца {selectedBlock.GetX}");
-
             foreach (BlockController block in ActivateRocket(_board.Blocks, selectedBlock.GetX))
             {
                 _boardManager.DestroyBlock(block);
@@ -112,15 +93,11 @@ namespace Assets.Match.Scripts.Gameplay
             _audioEffectsGame.PlayRocketSound();
             _camera.transform.DOShakePosition(0.8f, new Vector3(0f, 0.08f, -0.01f), 6, 1, false, true)
                              .OnComplete(() => _boardManager.SetupCamera());
-
-            _boardManager.SearchEmptyTile(); // Обновляем доску
+            _boardManager.SearchEmptyTile();
         }
 
-        // Метод для активации бонуса "бомба"
         private void ActivateBombBonus(BlockController selectedBlock)
         {
-            Debug.Log($"Активирован бонус бомба для области вокруг конфеты ({selectedBlock.GetX}, {selectedBlock.GetY})");
-
             foreach (BlockController block in ActivateBomb(_board.Blocks, selectedBlock.GetX, selectedBlock.GetY))
             {
                 _boardManager.DestroyBlock(block);
@@ -131,15 +108,12 @@ namespace Assets.Match.Scripts.Gameplay
             _audioEffectsGame.PlayBombSound();
             _camera.transform.DOShakePosition(1f, new Vector3(0f, 0.08f, -0.01f), 6, 1, false, true)
                              .OnComplete(() => _boardManager.SetupCamera());
-
-            _boardManager.SearchEmptyTile(); // Обновляем доску
+            _boardManager.SearchEmptyTile();
         }
 
-        // Логика для активации ракет (выбор всех блоков в столбце)
         private List<BlockController> ActivateRocket(Block[,] allPieces, int column)
         {
             List<BlockController> gamePieces = new List<BlockController>();
-
             for (int y = 0; y < allPieces.GetLength(1); y++)
             {
                 if (allPieces[column, y] != null)
@@ -147,15 +121,12 @@ namespace Assets.Match.Scripts.Gameplay
                     gamePieces.Add(allPieces[column, y].GetComponent<BlockController>());
                 }
             }
-
             return gamePieces;
         }
 
-        // Логика для активации бомбы (взрыв вокруг выбранной конфеты)
-        private List<BlockController> ActivateBomb(Block[,] tiles, int x, int y, int offset = 2)
+        private List<BlockController> ActivateBomb(Block[,] tiles, int x, int y, int offset = 1)
         {
             List<BlockController> gamePieces = new List<BlockController>();
-
             for (int i = x - offset; i <= x + offset; i++)
             {
                 for (int j = y - offset; j <= y + offset; j++)
@@ -166,16 +137,21 @@ namespace Assets.Match.Scripts.Gameplay
                     }
                 }
             }
-
             return gamePieces;
         }
 
-        // Проверка на выход за границы доски
         public bool IsWithinBounds(object[,] array2D, int x, int y)
         {
             return (x >= 0 && x < array2D.GetLength(0) && y >= 0 && y < array2D.GetLength(1));
         }
+
+        private void ClearHighlightedBlocks()
+        {
+            foreach (var block in highlightedBlocks)
+            {
+                block.Unselect();
+            }
+            highlightedBlocks.Clear();
+        }
     }
-
-
 }
