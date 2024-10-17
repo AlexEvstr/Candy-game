@@ -31,10 +31,12 @@ namespace Assets.Match.Scripts.Gameplay
 
         public void StarIncrease(int minStar)
         {
+            int currentCandyIndex = PlayerPrefs.GetInt("Candy1Index", 0);
+            currentCandyIndex++;
+            PlayerPrefs.SetInt("Candy1Index", currentCandyIndex);
+
             NumOfStar = minStar;
-            //StarChange?.Invoke();
             _victoryPanel.VictoryState();
-            Debug.Log("win");
         }
 
         public void ResetStar()
