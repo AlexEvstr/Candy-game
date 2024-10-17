@@ -1634,6 +1634,7 @@ MonoBehaviour:
   _audioEffectsGame: {fileID: 786310507}
   _objectsAnimation: {fileID: 885441606}
   _board: {fileID: 11400000, guid: c89279ab0b29fd4499a561289d047f11, type: 2}
+  _gameController: {fileID: 885441599}
   _bombPrefab: {fileID: 8244664802855823535, guid: a5a3e84f71183f74ba5573a8da3c1e62, type: 3}
   _rocketPrefab: {fileID: 6071451326438718115, guid: 4ea31cdf0b031894e8b270b39db3e602, type: 3}
   _explosion: {fileID: 355741858412787734, guid: 71624d2528e55664dae7efb64ec37660, type: 3}

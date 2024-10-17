@@ -17,6 +17,7 @@ namespace Assets.Match.Scripts.Gameplay
         [SerializeField] private AudioEffectsGame _audioEffectsGame;
         [SerializeField] private ObjectsAnimation _objectsAnimation;
         [SerializeField] private BoardScriptableObject _board;
+        [SerializeField] private GameController _gameController;
 
         [SerializeField] private GameObject _bombPrefab;
         [SerializeField] private GameObject _rocketPrefab;  // Ракета = шоколадка
@@ -84,12 +85,14 @@ namespace Assets.Match.Scripts.Gameplay
             {
                 Debug.Log("rocket");
                 ActivateRocketBonus(selectedBlock);
+                _gameController.BonusForMoves();
                 isRocketActive = false; // Сбрасываем флаг
             }
             else if (isBombActive)
             {
                 Debug.Log("bomb");
                 ActivateBombBonus(selectedBlock);
+                _gameController.BonusForMoves();
                 isBombActive = false; // Сбрасываем флаг
             }
         }
