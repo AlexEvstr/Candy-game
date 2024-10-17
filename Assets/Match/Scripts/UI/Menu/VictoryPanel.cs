@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Assets.Match.Scripts.Audio;
 using Assets.Match.Scripts.Gameplay;
 using Assets.Match.Scripts.UI.Animations;
-using System.Threading;
+using System.Collections;
 
 namespace Assets.Match.Scripts.UI.Menu
 {
@@ -69,25 +69,35 @@ namespace Assets.Match.Scripts.UI.Menu
             }
         }
 
-        public async void VictoryState()
+        public void VictoryState()
         {
+            StartCoroutine(VictoryStateCoroutine());
+        }
+
+        private IEnumerator VictoryStateCoroutine()
+        {
+            yield return new WaitForSeconds(0.5f);
             try
             {
                 IsVictoryState = true;
-                await Task.Delay(1500);
-                _gamePanel.SetActive(_isOpen);
-                _audioEffectsGame.PlayVictorySound();
-                _gameMenuAnimation.ForVictory();
-                CheckNumberOfStars();
-                _starController.SaveStarData();
 
+                _gamePanel.SetActive(_isOpen);
+
+                _audioEffectsGame.PlayVictorySound();
+
+                _gameMenuAnimation.ForVictory();
+
+                //CheckNumberOfStars();
+
+                _starController.SaveStarData();
             }
             catch (System.Exception exception)
             {
-                Debug.LogError(exception.Message);
-                throw;
+                // Ловим и выводим ошибку в случае сбоя
+                Debug.LogError($"Ошибка в VictoryState: {exception.Message}");
             }
         }
+
 
         private void CheckNumberOfStars()
         {

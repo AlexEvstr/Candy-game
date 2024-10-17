@@ -2574,6 +2574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelConfig: {fileID: 11400000, guid: d2c8fe4e0dc11db4c9ce6f7c9e78ff95, type: 2}
+  _victoryPanel: {fileID: 1927820318}
 --- !u!114 &885441601
 MonoBehaviour:
   m_ObjectHideFlags: 0

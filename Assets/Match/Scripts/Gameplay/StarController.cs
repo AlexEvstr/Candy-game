@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Assets.Match.Scripts.UI.Menu;
 #if (UNITY_EDITOR)
 using Assets.Match.Scripts.EditorChanges;
 #endif
@@ -14,7 +15,8 @@ namespace Assets.Match.Scripts.Gameplay
 #if (UNITY_EDITOR)
         [RequiredField]
 #endif
-        [SerializeField] private LevelsConfigurationScriptable _levelConfig;    
+        [SerializeField] private LevelsConfigurationScriptable _levelConfig;
+        [SerializeField] private VictoryPanel _victoryPanel;
 
         public int NumOfStar { get; set; }
 
@@ -29,8 +31,9 @@ namespace Assets.Match.Scripts.Gameplay
 
         public void StarIncrease(int minStar)
         {
-            //NumOfStar = minStar;
+            NumOfStar = minStar;
             //StarChange?.Invoke();
+            _victoryPanel.VictoryState();
             Debug.Log("win");
         }
 
