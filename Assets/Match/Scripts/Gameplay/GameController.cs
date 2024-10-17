@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Match.Scripts.Gameplay
 {
@@ -57,6 +58,11 @@ namespace Assets.Match.Scripts.Gameplay
         {
             _goalController.ResetGoals();
             _moveController.ResetMoves();
+        }
+
+        public void BackToMenuBtn()
+        {
+            SceneManager.LoadScene("menu");
         }
     }
 }

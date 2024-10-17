@@ -52,7 +52,8 @@ namespace Assets.Match.Scripts.UI.Menu
         private void ToNextLevel()
         {
             _buttonAudioEffect.PlayClickSound();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("game");
         }
 
         private async void ToStartMenu()
@@ -61,7 +62,7 @@ namespace Assets.Match.Scripts.UI.Menu
             {
                 _buttonAudioEffect.PlayClickSound();
                 await Task.Delay(300);
-                SceneManager.LoadScene(0, LoadSceneMode.Single);
+                SceneManager.LoadScene("menu");
             }
             catch (System.Exception exception)
             {
@@ -93,7 +94,6 @@ namespace Assets.Match.Scripts.UI.Menu
             }
             catch (System.Exception exception)
             {
-                // Ловим и выводим ошибку в случае сбоя
                 Debug.LogError($"Ошибка в VictoryState: {exception.Message}");
             }
         }

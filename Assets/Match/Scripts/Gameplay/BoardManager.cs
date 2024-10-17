@@ -59,7 +59,7 @@ namespace Assets.Match.Scripts.Gameplay
         private bool _isSelecting = false;
         private bool _isDrop = false;
 
- #endregion
+        #endregion
 
 
         private void Awake()
@@ -262,42 +262,30 @@ namespace Assets.Match.Scripts.Gameplay
             _isSelecting = false;
             TotalMatch = _selectedBlocks.Count;
 
-            if(TotalMatch == 1 && _levelConfig.level.isBonusLevel == true)
+            if (TotalMatch == 1)  // Проверка для активации бонуса
             {
                 foreach (BlockController matchedTile in _selectedBlocks)
                 {
-                    _bonusController.BonusValidation(matchedTile, _boardScriptableObject.Blocks);
+                    _bonusController.HandleBonusSelection(matchedTile);  // Передаем выбор в BonusController
                 }
-                //ClearSelectedTiles();
             }
+            // Обычная игровая логика, если бонусы не активны
             else if (TotalMatch >= 3)
             {
                 _gameController.CountingScore(TotalMatch);
                 _selectedBlocks.Sort((p1, p2) => p1.GetY.CompareTo(p2.GetY));
                 foreach (BlockController matchedTile in _selectedBlocks)
                 {
-
                     matchedTile.DestroyObstacle(matchedTile);
                     DestroyBlock(matchedTile);
                 }
-                //ClearSelectedTiles();
                 _moveController.NumberOfMoves(_moveController.TotalMove - 1);
-                
             }
-            else
-            {
-                
-            }
+
             ClearSelectedTiles();
             SearchEmptyTile();
 
-            //if (_levelConfig.level.isBonusLevel == true)
-            //{
-            //    _bonusController.GetBonus(TotalMatch);              
-            //}
-
             _isDrop = false;
-
             TotalMatch = 0;
         }
 

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Assets.Match.Scripts.Audio
@@ -53,5 +54,9 @@ namespace Assets.Match.Scripts.Audio
             _bonusSound.Play();
         }
 
+        internal void PlayBonusActivationSound()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

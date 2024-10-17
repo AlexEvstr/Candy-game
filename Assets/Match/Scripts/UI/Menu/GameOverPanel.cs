@@ -35,7 +35,7 @@ namespace Assets.Match.Scripts.UI.Menu
         private void OnEnable()
         {
             _restartLevelButton.onClick.AddListener(Restart);
-            _exitButton.onClick.AddListener(ToStartMenu);
+            //_exitButton.onClick.AddListener(ToStartMenu);
         }       
 
         private void Restart()
@@ -85,7 +85,7 @@ namespace Assets.Match.Scripts.UI.Menu
         private void OnDisable()
         {
             _restartLevelButton.onClick.RemoveListener(Restart);
-            _exitButton.onClick.RemoveListener(ToStartMenu);
+            //_exitButton.onClick.RemoveListener(ToStartMenu);
         }
     }
 }

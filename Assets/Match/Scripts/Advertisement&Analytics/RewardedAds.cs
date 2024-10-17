@@ -31,7 +31,7 @@ namespace Assets.Match.Scripts.Ads
 
         private void OnEnable()
         {
-            _showAdButton.onClick.AddListener(ShowAd);
+            //_showAdButton.onClick.AddListener(ShowAd);
         }
 
         private void Awake()
@@ -49,7 +49,7 @@ namespace Assets.Match.Scripts.Ads
                 _adId = _androidAdsID;
             }
 
-            _showAdButton.interactable = false;
+            //_showAdButton.interactable = false;
             LoadAd();
         }
 
