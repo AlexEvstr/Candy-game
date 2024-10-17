@@ -34,18 +34,46 @@ namespace Assets.Match.Scripts.Gameplay
             _camera = Camera.main;
         }
 
-        // Активация режима ракеты (шоколадки)
+        // Проверяем активен ли режим ракеты
+        public bool IsRocketModeActive()
+        {
+            return isRocketActive;
+        }
+
+        // Проверяем активен ли режим бомбы
+        public bool IsBombModeActive()
+        {
+            return isBombActive;
+        }
+
+        // Активация режима ракеты
         public void ActivateRocketMode()
         {
             isRocketActive = true;
+            isBombActive = false;  // Деактивируем бомбу, если активна
             Debug.Log("Режим ракеты активирован. Выберите конфету.");
+        }
+
+        // Деактивация режима ракеты
+        public void DeactivateRocketMode()
+        {
+            isRocketActive = false;
+            Debug.Log("Режим ракеты деактивирован.");
         }
 
         // Активация режима бомбы
         public void ActivateBombMode()
         {
             isBombActive = true;
+            isRocketActive = false;  // Деактивируем ракету, если активна
             Debug.Log("Режим бомбы активирован. Выберите конфету.");
+        }
+
+        // Деактивация режима бомбы
+        public void DeactivateBombMode()
+        {
+            isBombActive = false;
+            Debug.Log("Режим бомбы деактивирован.");
         }
 
         // Метод для обработки выбора конфеты

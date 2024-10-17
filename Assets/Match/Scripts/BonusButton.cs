@@ -3,17 +3,33 @@ using UnityEngine;
 
 public class BonusButton : MonoBehaviour
 {
-    [SerializeField] private BonusController _bonusController; // Изменяем ссылку на BonusController вместо BoardManager
+    [SerializeField] private BonusController _bonusController; // Ссылка на BonusController
 
-    // Кнопка для активации режима ракеты (шоколадка)
+    // Кнопка для активации/деактивации режима ракеты (шоколадка)
     public void OnRocketButtonPressed()
     {
-        _bonusController.ActivateRocketMode(); // Активируем режим ракеты
+        // Проверяем текущее состояние и переключаем его
+        if (_bonusController.IsRocketModeActive())
+        {
+            _bonusController.DeactivateRocketMode();  // Деактивируем режим
+        }
+        else
+        {
+            _bonusController.ActivateRocketMode();  // Активируем режим
+        }
     }
 
-    // Кнопка для активации режима бомбы
+    // Кнопка для активации/деактивации режима бомбы
     public void OnBombButtonPressed()
     {
-        _bonusController.ActivateBombMode(); // Активируем режим бомбы
+        // Проверяем текущее состояние и переключаем его
+        if (_bonusController.IsBombModeActive())
+        {
+            _bonusController.DeactivateBombMode();  // Деактивируем режим
+        }
+        else
+        {
+            _bonusController.ActivateBombMode();  // Активируем режим
+        }
     }
 }

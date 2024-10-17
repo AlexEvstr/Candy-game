@@ -267,6 +267,7 @@ namespace Assets.Match.Scripts.Gameplay
                 foreach (BlockController matchedTile in _selectedBlocks)
                 {
                     _bonusController.HandleBonusSelection(matchedTile);  // Передаем выбор в BonusController
+                    _gameController.BonusForMoves();
                 }
             }
             // Обычная игровая логика, если бонусы не активны
