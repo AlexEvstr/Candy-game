@@ -104,7 +104,7 @@ namespace Assets.Match.Scripts.Gameplay
                 if (hit)
                 {
                     BlockController hitBlock = hit.collider.gameObject.GetComponent<BlockController>();
-                    if (hitBlock != null && (_bonusController.IsRocketModeActive() || _bonusController.IsBombModeActive()))
+                    if (hitBlock != null && (_bonusController.IsRocketModeActive() || _bonusController.IsBombModeActive() || _bonusController.IsEraserModeActive()))
                     {
                         _bonusController.HighlightBlocks(hitBlock); // Подсветка блоков, если активен бонус
                     }

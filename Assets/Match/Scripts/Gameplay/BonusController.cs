@@ -21,6 +21,7 @@ namespace Assets.Match.Scripts.Gameplay
         private Camera _camera;
         private bool isRocketActive = false;
         private bool isBombActive = false;
+        private bool isEraserActive = false;
 
         private List<BlockController> highlightedBlocks = new List<BlockController>();
 
@@ -31,11 +32,13 @@ namespace Assets.Match.Scripts.Gameplay
 
         public bool IsRocketModeActive() => isRocketActive;
         public bool IsBombModeActive() => isBombActive;
+        public bool IsEraserModeActive() => isEraserActive;
 
         public void ToggleRocketMode()
         {
             isRocketActive = !isRocketActive;
             isBombActive = false;
+            isEraserActive = false;
             ClearHighlightedBlocks();
         }
 
@@ -43,6 +46,15 @@ namespace Assets.Match.Scripts.Gameplay
         {
             isBombActive = !isBombActive;
             isRocketActive = false;
+            isEraserActive = false;
+            ClearHighlightedBlocks();
+        }
+
+        public void ToggleEraserMode()
+        {
+            isEraserActive = !isEraserActive;
+            isRocketActive = false;
+            isBombActive = false;
             ClearHighlightedBlocks();
         }
 
@@ -60,6 +72,12 @@ namespace Assets.Match.Scripts.Gameplay
                 _gameController.BonusForMoves();
                 isBombActive = false;
             }
+            else if (isEraserActive)
+            {
+                ActivateEraserBonus(selectedBlock);
+                _gameController.BonusForMoves();
+                isEraserActive = false;
+            }
             ClearHighlightedBlocks();
         }
 
@@ -73,6 +91,10 @@ namespace Assets.Match.Scripts.Gameplay
             else if (isBombActive)
             {
                 highlightedBlocks = ActivateBomb(_board.Blocks, selectedBlock.GetX, selectedBlock.GetY);
+            }
+            else if (isEraserActive)
+            {
+                highlightedBlocks = ActivateEraser(_board.Blocks, selectedBlock.GetY);
             }
 
             foreach (var block in highlightedBlocks)
@@ -135,6 +157,34 @@ namespace Assets.Match.Scripts.Gameplay
                     {
                         gamePieces.Add(tiles[i, j].GetComponent<BlockController>());
                     }
+                }
+            }
+            return gamePieces;
+        }
+
+        private void ActivateEraserBonus(BlockController selectedBlock)
+        {
+            foreach (BlockController block in ActivateEraser(_board.Blocks, selectedBlock.GetY))
+            {
+                _boardManager.DestroyBlock(block);
+                GameObject explosion = Instantiate(_explosion, block.transform.position, Quaternion.identity);
+                Destroy(explosion, 2f);
+            }
+
+            _audioEffectsGame.PlayRocketSound();
+            _camera.transform.DOShakePosition(0.8f, new Vector3(0f, 0.08f, -0.01f), 6, 1, false, true)
+                             .OnComplete(() => _boardManager.SetupCamera());
+            _boardManager.SearchEmptyTile();
+        }
+
+        private List<BlockController> ActivateEraser(Block[,] allPieces, int row)
+        {
+            List<BlockController> gamePieces = new List<BlockController>();
+            for (int x = 0; x < allPieces.GetLength(0); x++)
+            {
+                if (allPieces[x, row] != null)
+                {
+                    gamePieces.Add(allPieces[x, row].GetComponent<BlockController>());
                 }
             }
             return gamePieces;
