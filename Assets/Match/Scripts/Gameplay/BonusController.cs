@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 using Assets.Match.Scripts.Audio;
 using Assets.Match.Scripts.Models;
 using Assets.Match.Scripts.UI.Animations;
@@ -16,6 +17,12 @@ namespace Assets.Match.Scripts.Gameplay
         [SerializeField] private BoardScriptableObject _board;
         [SerializeField] private GameController _gameController;
         [SerializeField] private GameObject[] _bonusFrames;
+        [SerializeField] private TMP_Text _bombText;
+        [SerializeField] private TMP_Text _eraserText;
+        [SerializeField] private TMP_Text _chokoText;
+        private int _bombCount;
+        private int _eraserCount;
+        private int _chokoCount;
 
         [SerializeField] private GameObject _explosion;
 
@@ -29,6 +36,12 @@ namespace Assets.Match.Scripts.Gameplay
         private void Awake()
         {
             _camera = Camera.main;
+            _bombCount = PlayerPrefs.GetInt("BombCount", 2);
+            _bombText.text = $"x{_bombCount}";
+            _eraserCount = PlayerPrefs.GetInt("EraserCount", 2);
+            _eraserText.text = $"x{_eraserCount}";
+            _chokoCount = PlayerPrefs.GetInt("ChokoCount", 2);
+            _chokoText.text = $"x{_chokoCount}";
         }
 
         public bool IsRocketModeActive() => isRocketActive;
@@ -37,6 +50,7 @@ namespace Assets.Match.Scripts.Gameplay
 
         public void ToggleRocketMode()
         {
+            if (_chokoCount <= 0) return;
             isRocketActive = !isRocketActive;
             isBombActive = false;
             isEraserActive = false;
@@ -53,6 +67,7 @@ namespace Assets.Match.Scripts.Gameplay
 
         public void ToggleBombMode()
         {
+            if (_bombCount <= 0) return;
             isBombActive = !isBombActive;
             isRocketActive = false;
             isEraserActive = false;
@@ -69,6 +84,7 @@ namespace Assets.Match.Scripts.Gameplay
 
         public void ToggleEraserMode()
         {
+            if (_eraserCount <= 0) return;
             isEraserActive = !isEraserActive;
             isRocketActive = false;
             isBombActive = false;
@@ -130,6 +146,9 @@ namespace Assets.Match.Scripts.Gameplay
 
         private void ActivateRocketBonus(BlockController selectedBlock)
         {
+            _chokoCount--;
+            _chokoText.text = $"x{_chokoCount}";
+            PlayerPrefs.SetInt("ChokoCount", _chokoCount);
             foreach (BlockController block in ActivateRocket(_board.Blocks, selectedBlock.GetX))
             {
                 _boardManager.DestroyBlock(block);
@@ -145,6 +164,9 @@ namespace Assets.Match.Scripts.Gameplay
 
         private void ActivateBombBonus(BlockController selectedBlock)
         {
+            _bombCount--;
+            _bombText.text = $"x{_bombCount}";
+            PlayerPrefs.SetInt("BombCount", _bombCount);
             foreach (BlockController block in ActivateBomb(_board.Blocks, selectedBlock.GetX, selectedBlock.GetY))
             {
                 _boardManager.DestroyBlock(block);
@@ -189,6 +211,9 @@ namespace Assets.Match.Scripts.Gameplay
 
         private void ActivateEraserBonus(BlockController selectedBlock)
         {
+            _eraserCount--;
+            _eraserText.text = $"x{_eraserCount}";
+            PlayerPrefs.SetInt("EraserCount", _eraserCount);
             foreach (BlockController block in ActivateEraser(_board.Blocks, selectedBlock.GetY))
             {
                 _boardManager.DestroyBlock(block);

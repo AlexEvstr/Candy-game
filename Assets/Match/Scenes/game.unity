@@ -590,7 +590,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: x2
+  m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3de9a4247be26405eab88dbf719464be, type: 2}
   m_sharedMaterial: {fileID: 3279703967794193245, guid: 3de9a4247be26405eab88dbf719464be, type: 2}
@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: x2
+  m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3de9a4247be26405eab88dbf719464be, type: 2}
   m_sharedMaterial: {fileID: 3279703967794193245, guid: 3de9a4247be26405eab88dbf719464be, type: 2}
@@ -1789,6 +1789,9 @@ MonoBehaviour:
   - {fileID: 286305514}
   - {fileID: 740591143}
   - {fileID: 42696411}
+  _bombText: {fileID: 223906176}
+  _eraserText: {fileID: 130957970}
+  _chokoText: {fileID: 1662179163}
   _explosion: {fileID: 355741858412787734, guid: 71624d2528e55664dae7efb64ec37660, type: 3}
 --- !u!114 &495482194
 MonoBehaviour:
@@ -4133,7 +4136,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -4402,7 +4405,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -4995,7 +4998,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: x2
+  m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3de9a4247be26405eab88dbf719464be, type: 2}
   m_sharedMaterial: {fileID: 3279703967794193245, guid: 3de9a4247be26405eab88dbf719464be, type: 2}
@@ -5736,7 +5739,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
