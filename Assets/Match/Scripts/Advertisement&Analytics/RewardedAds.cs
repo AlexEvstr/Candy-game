@@ -9,10 +9,8 @@ namespace Assets.Match.Scripts.Ads
 
     public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
     {
-        [SerializeField] private MoveController _moveController;
-        [SerializeField] private GameMenuAnimation _gameMenuAnimation;
         [SerializeField] private Button _showAdButton;
-        [SerializeField] private GameObject _gamePanel;
+        [SerializeField] private GameObject[] _bonuses;
 
 #region Android ID
 
@@ -31,7 +29,7 @@ namespace Assets.Match.Scripts.Ads
 
         private void OnEnable()
         {
-            //_showAdButton.onClick.AddListener(ShowAd);
+            _showAdButton.onClick.AddListener(ShowAd);
         }
 
         private void Awake()
@@ -61,7 +59,7 @@ namespace Assets.Match.Scripts.Ads
 
         public void ShowAd()
         {
-            _showAdButton.interactable = false;
+            //_showAdButton.interactable = false;
             Debug.Log("Showing rewarded Ad: " + _adId);
             Advertisement.Show(_adId, this);
         }
@@ -93,11 +91,42 @@ namespace Assets.Match.Scripts.Ads
         {
             if (showCompletionState == UnityAdsShowCompletionState.COMPLETED)
             {
-                _gamePanel.SetActive(true);
-                _moveController.NumberOfMoves(+5);
-                _gameMenuAnimation.ForRestartAndContinue();               
-                _showAdButton.interactable = false;
+                //_gamePanel.SetActive(true);
+                //_moveController.NumberOfMoves(+5);
+                //_gameMenuAnimation.ForRestartAndContinue();
+                int randomBonus = Random.Range(0, 3);
+                if (randomBonus == 0)
+                {
+                    int bombCount = PlayerPrefs.GetInt("BombCount", 2);
+                    bombCount++;
+                    PlayerPrefs.SetInt("BombCount", bombCount);
+                    _bonuses[0].SetActive(true);
+                }
+                else if (randomBonus == 1)
+                {
+                    int eraserCount = PlayerPrefs.GetInt("EraserCount", 2);
+                    eraserCount++;
+                    PlayerPrefs.SetInt("EraserCount", eraserCount);
+                    _bonuses[1].SetActive(true);
+                }
+                else if (randomBonus == 2)
+                {
+                    int chokoCount = PlayerPrefs.GetInt("ChokoCount", 2);
+                    chokoCount++;
+                    PlayerPrefs.SetInt("ChokoCount", chokoCount);
+                    _bonuses[2].SetActive(true);
+                }
+
+                //_showAdButton.interactable = false;
                 Debug.Log("Unity Ads Rewarded Ad Completed");
+            }
+        }
+
+        public void CloseBonus()
+        {
+            foreach (var item in _bonuses)
+            {
+                item.SetActive(false);
             }
         }
 

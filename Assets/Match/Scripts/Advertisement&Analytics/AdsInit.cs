@@ -10,14 +10,13 @@ namespace Assets.Match.Scripts.Ads
         [SerializeField] private InterstitialAds _interstitialAds;
         [SerializeField] private bool _testMode = false;
 
-        private readonly string _androidGameID = "4996815";
-        private readonly string _iphoneGameID = "4996814";
+        private readonly string _androidGameID = "5715414";
+        private readonly string _iphoneGameID = "5715415";
 
         private string _gameID = null;
 
         public override void Awake()
         {
-            base.Awake();
             InitializeAds();
         }
 
@@ -41,13 +40,11 @@ namespace Assets.Match.Scripts.Ads
 
         public void OnInitializationComplete()
         {
-            Debug.Log("Unity Ads initialization complete");
-            _interstitialAds.LoadAd();
+            //_interstitialAds.LoadAd();
         }
 
         public void OnInitializationFailed(UnityAdsInitializationError error, string message)
         {
-            Debug.Log($"Unity Ads initialization failed: {error} - {message}");
         }
 
     }
