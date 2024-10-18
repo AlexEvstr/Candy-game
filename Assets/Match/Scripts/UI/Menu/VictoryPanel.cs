@@ -39,20 +39,9 @@ namespace Assets.Match.Scripts.UI.Menu
             _exitButton.onClick.AddListener(ToStartMenu);
         }
 
-        private void Awake()
-        {
-            int buildIndex = SceneUtility.GetBuildIndexByScenePath(SceneManager.GetActiveScene().path);
-
-            if (SceneManager.sceneCountInBuildSettings - 1 < buildIndex + 1)         
-                _nextLevelButton.interactable = false;           
-            else          
-                _nextLevelButton.interactable = true;           
-        }
-
         private void ToNextLevel()
         {
             _buttonAudioEffect.PlayClickSound();
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             SceneManager.LoadScene("game");
         }
 
