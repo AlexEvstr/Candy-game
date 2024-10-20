@@ -6,10 +6,12 @@ public class ObjectSwitcher : MonoBehaviour
     private int currentIndex = 0;
     private Vector2 startTouchPosition, endTouchPosition;
     private float swipeThreshold = 50f;
+    private AudioAndVibroUI _audioAndVibroUI;
 
     void Start()
     {
         SwitchObject(currentIndex);
+        _audioAndVibroUI = GetComponent<AudioAndVibroUI>();
     }
 
     void Update()
@@ -43,6 +45,7 @@ public class ObjectSwitcher : MonoBehaviour
                     {
                         SwitchNextObject();
                     }
+                    _audioAndVibroUI.SwipeSound();
                 }
             }
         }

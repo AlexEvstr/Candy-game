@@ -16,42 +16,50 @@ namespace Assets.Match.Scripts.Audio
         [SerializeField] private AudioSource _bombSound;
         [SerializeField] private AudioSource _rocketSound;
         [SerializeField] private AudioSource _bonusSound;
+        [SerializeField] private AudioAndVibroUI _audioAndVibroUI;
 
 #endregion
 
         public void PlayDropSound()
         {
             _dropSound.Play();
+            _audioAndVibroUI.PlaySmallVibro();
         }
 
         public void PlayLoseSound()
         {
             _loseSound.Play();
+            _audioAndVibroUI.PlayErrorVibro();
         }
 
         public void PlayVictorySound()
         {
             _victorySound.Play();
+            _audioAndVibroUI.PlayBigVibro();
         }
 
         public void PlaySelectSound()
         {
             _selectSound.Play();
+            _audioAndVibroUI.PlaySmallVibro();
         }
 
         public void PlayBombSound()
         {
             _bombSound.Play();
+            _audioAndVibroUI.PlayBigVibro();
         }
 
         public void PlayRocketSound()
         {
             _rocketSound.Play();
+            _audioAndVibroUI.PlayBigVibro();
         }
 
         public void PlayBonusSound()
         {
             _bonusSound.Play();
+            _audioAndVibroUI.PlayMediumVibro();
         }
 
         internal void PlayBonusActivationSound()

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioAndVibroUI : MonoBehaviour
@@ -8,11 +6,17 @@ public class AudioAndVibroUI : MonoBehaviour
     [SerializeField] private GameObject _auidoOff;
     [SerializeField] private GameObject _vibroOn;
     [SerializeField] private GameObject _vibroOff;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _clickSound;
+    [SerializeField] private AudioClip _unlockBonusSound;
+    [SerializeField] private AudioClip _swipeSound;
+    private VibeOrchestrator _vibeOrchestrator;
 
     private bool _canVibro;
 
     private void Start()
     {
+        _vibeOrchestrator = GetComponent<VibeOrchestrator>();
         int audio = PlayerPrefs.GetInt("AudioVolume", 1);
         if (audio == 1) AudioOn();
         else AudioOff();
@@ -52,5 +56,64 @@ public class AudioAndVibroUI : MonoBehaviour
         _vibroOn.SetActive(true);
         _canVibro = true;
         PlayerPrefs.SetInt("VibroCan", 1);
+    }
+
+    public void CLickSound()
+    {
+        _audioSource.PlayOneShot(_clickSound);
+        if (_canVibro)
+        {
+            _vibeOrchestrator.TriggerGentlePulse();
+        }
+    }
+
+    public void UnlockBonusSound()
+    {
+        _audioSource.PlayOneShot(_unlockBonusSound);
+        if (_canVibro)
+        {
+            _vibeOrchestrator.TriggerMightyPulse();
+        }
+    }
+
+    public void SwipeSound()
+    {
+        _audioSource.PlayOneShot(_swipeSound);
+        if (_canVibro)
+        {
+            _vibeOrchestrator.TriggerGentlePulse();
+        }
+    }
+
+    public void PlaySmallVibro()
+    {
+        if (_canVibro)
+        {
+            _vibeOrchestrator.TriggerGentlePulse();
+        }
+    }
+
+    public void PlayMediumVibro()
+    {
+        if (_canVibro)
+        {
+            _vibeOrchestrator.TriggerBalancedPulse();
+        }
+    }
+
+    public void PlayBigVibro()
+    {
+        if (_canVibro)
+        {
+            _vibeOrchestrator.TriggerMightyPulse();
+        }
+    }
+
+    public void PlayErrorVibro()
+    {
+        if (_canVibro)
+        {
+            _vibeOrchestrator.TriggerErrorBuzz();
+        }
     }
 }

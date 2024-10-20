@@ -11,8 +11,9 @@ namespace Assets.Match.Scripts.Ads
     {
         [SerializeField] private Button _showAdButton;
         [SerializeField] private GameObject[] _bonuses;
+        private AudioAndVibroUI _audioAndVibroUI;
 
-#region Android ID
+        #region Android ID
 
         private readonly string _androidAdsID = "Rewarded_Android";
 
@@ -30,9 +31,10 @@ namespace Assets.Match.Scripts.Ads
         private void OnEnable()
         {
             _showAdButton.onClick.AddListener(ShowAd);
+            _audioAndVibroUI = GetComponent<AudioAndVibroUI>();
         }
 
-        private void Awake()
+        private void Start()
         {
             if (Application.platform == RuntimePlatform.IPhonePlayer)
             {
@@ -47,7 +49,7 @@ namespace Assets.Match.Scripts.Ads
                 _adId = _androidAdsID;
             }
 
-            //_showAdButton.interactable = false;
+            _showAdButton.interactable = false;
             LoadAd();
         }
 
@@ -59,7 +61,7 @@ namespace Assets.Match.Scripts.Ads
 
         public void ShowAd()
         {
-            //_showAdButton.interactable = false;
+            _showAdButton.interactable = false;
             Debug.Log("Showing rewarded Ad: " + _adId);
             Advertisement.Show(_adId, this);
         }
@@ -116,9 +118,11 @@ namespace Assets.Match.Scripts.Ads
                     PlayerPrefs.SetInt("ChokoCount", chokoCount);
                     _bonuses[2].SetActive(true);
                 }
+                _audioAndVibroUI.UnlockBonusSound();
 
-                //_showAdButton.interactable = false;
+                _showAdButton.interactable = false;
                 Debug.Log("Unity Ads Rewarded Ad Completed");
+                LoadAd();
             }
         }
 

@@ -293,6 +293,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1808600235}
+        m_TargetAssemblyTypeName: AudioAndVibroUI, Assembly-CSharp
+        m_MethodName: CLickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &29541631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -866,6 +878,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1808600235}
+        m_TargetAssemblyTypeName: AudioAndVibroUI, Assembly-CSharp
+        m_MethodName: CLickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &169652995
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,6 +979,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1808600236}
         m_TargetAssemblyTypeName: Assets.Match.Scripts.Ads.RewardedAds, Assembly-CSharp
         m_MethodName: CloseBonus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1808600235}
+        m_TargetAssemblyTypeName: AudioAndVibroUI, Assembly-CSharp
+        m_MethodName: CLickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1225,6 +1261,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1808600236}
         m_TargetAssemblyTypeName: Assets.Match.Scripts.Ads.RewardedAds, Assembly-CSharp
         m_MethodName: CloseBonus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1808600235}
+        m_TargetAssemblyTypeName: AudioAndVibroUI, Assembly-CSharp
+        m_MethodName: CLickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2220,6 +2268,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1808600235}
+        m_TargetAssemblyTypeName: AudioAndVibroUI, Assembly-CSharp
+        m_MethodName: CLickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1808600233}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: OpenTutorial
@@ -3113,6 +3173,134 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1164620413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1164620415}
+  - component: {fileID: 1164620414}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1164620414
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164620413}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e56fdb5ce7b5b44fbbebf6bce2c328b2, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1164620415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164620413}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1220087668
 GameObject:
   m_ObjectHideFlags: 0
@@ -3454,6 +3642,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1808600235}
+        m_TargetAssemblyTypeName: AudioAndVibroUI, Assembly-CSharp
+        m_MethodName: CLickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1296264058
 GameObject:
   m_ObjectHideFlags: 0
@@ -3782,7 +3982,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1345990104}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1808600235}
+        m_TargetAssemblyTypeName: AudioAndVibroUI, Assembly-CSharp
+        m_MethodName: CLickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1349452743
 GameObject:
   m_ObjectHideFlags: 0
@@ -3906,6 +4118,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1808600235}
         m_TargetAssemblyTypeName: AudioAndVibroUI, Assembly-CSharp
         m_MethodName: VibroOn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1808600235}
+        m_TargetAssemblyTypeName: AudioAndVibroUI, Assembly-CSharp
+        m_MethodName: CLickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4112,7 +4336,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1381129249}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1808600235}
+        m_TargetAssemblyTypeName: AudioAndVibroUI, Assembly-CSharp
+        m_MethodName: CLickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1399726055
 GameObject:
   m_ObjectHideFlags: 0
@@ -4890,7 +5126,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1662719321}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1808600235}
+        m_TargetAssemblyTypeName: AudioAndVibroUI, Assembly-CSharp
+        m_MethodName: CLickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1689454188
 GameObject:
   m_ObjectHideFlags: 0
@@ -5014,6 +5262,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1808600235}
         m_TargetAssemblyTypeName: AudioAndVibroUI, Assembly-CSharp
         m_MethodName: AudioOn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1808600235}
+        m_TargetAssemblyTypeName: AudioAndVibroUI, Assembly-CSharp
+        m_MethodName: CLickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5321,8 +5581,8 @@ GameObject:
   - component: {fileID: 1808600232}
   - component: {fileID: 1808600234}
   - component: {fileID: 1808600235}
-  - component: {fileID: 1808600237}
   - component: {fileID: 1808600236}
+  - component: {fileID: 1808600237}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -5438,6 +5698,10 @@ MonoBehaviour:
   _auidoOff: {fileID: 1689454188}
   _vibroOn: {fileID: 1949367968}
   _vibroOff: {fileID: 1349452743}
+  _audioSource: {fileID: 1164620414}
+  _clickSound: {fileID: 8300000, guid: a180d521d58a145ec9267319efa24a8e, type: 3}
+  _unlockBonusSound: {fileID: 8300000, guid: 33aa7e8088d304370b997819ba65d10d, type: 3}
+  _swipeSound: {fileID: 8300000, guid: c886146e412844d4cbf9bc72ffe368f7, type: 3}
 --- !u!114 &1808600236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5464,11 +5728,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1808600230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 256345ff5699ebf43a43519a349a2a84, type: 3}
+  m_Script: {fileID: 11500000, guid: e518637148d594f238008a307c94c7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interstitialAds: {fileID: 0}
-  _testMode: 0
 --- !u!1 &1831622833
 GameObject:
   m_ObjectHideFlags: 0
@@ -5596,6 +5858,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1808600236}
         m_TargetAssemblyTypeName: Assets.Match.Scripts.Ads.RewardedAds, Assembly-CSharp
         m_MethodName: CloseBonus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1808600235}
+        m_TargetAssemblyTypeName: AudioAndVibroUI, Assembly-CSharp
+        m_MethodName: CLickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5812,6 +6086,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1808600235}
+        m_TargetAssemblyTypeName: AudioAndVibroUI, Assembly-CSharp
+        m_MethodName: CLickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1938984611
 GameObject:
   m_ObjectHideFlags: 0
@@ -6014,6 +6300,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1808600235}
         m_TargetAssemblyTypeName: AudioAndVibroUI, Assembly-CSharp
         m_MethodName: VibroOff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1808600235}
+        m_TargetAssemblyTypeName: AudioAndVibroUI, Assembly-CSharp
+        m_MethodName: CLickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6313,7 +6611,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2037310591}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1808600235}
+        m_TargetAssemblyTypeName: AudioAndVibroUI, Assembly-CSharp
+        m_MethodName: CLickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2037310591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6792,3 +7102,4 @@ SceneRoots:
   - {fileID: 2071748161}
   - {fileID: 70944016}
   - {fileID: 1808600231}
+  - {fileID: 1164620415}

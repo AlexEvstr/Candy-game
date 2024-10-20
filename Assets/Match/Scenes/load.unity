@@ -766,6 +766,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1564440001}
   - component: {fileID: 1564440002}
+  - component: {fileID: 1564440003}
   m_Layer: 0
   m_Name: LoadManager
   m_TagString: Untagged
@@ -801,6 +802,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blueString: {fileID: 1885775584}
+--- !u!114 &1564440003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564439999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256345ff5699ebf43a43519a349a2a84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interstitialAds: {fileID: 0}
+  _testMode: 0
 --- !u!1 &1691400234
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ public class MenuButtons : MonoBehaviour
 
     private void Start()
     {
+        Screen.orientation = ScreenOrientation.Portrait;
         int currentCandy1Index = PlayerPrefs.GetInt("Candy1Index", 0);
         if (currentCandy1Index >= 10)
         {

@@ -12,6 +12,7 @@ public class LoadEnter : MonoBehaviour
 
     void Start()
     {
+        Screen.orientation = ScreenOrientation.Portrait;
         blueString.fillAmount = 0f;
         StartCoroutine(FillProgressBar());
     }

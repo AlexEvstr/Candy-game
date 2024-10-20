@@ -6,6 +6,7 @@ using Assets.Match.Scripts.Audio;
 using Assets.Match.Scripts.Models;
 using Assets.Match.Scripts.UI.Animations;
 using Assets.Match.Scripts.ScriptableObjects;
+using UnityEngine.UI;
 
 namespace Assets.Match.Scripts.Gameplay
 {
@@ -35,6 +36,7 @@ namespace Assets.Match.Scripts.Gameplay
 
         private void Awake()
         {
+            Screen.orientation = ScreenOrientation.Portrait;
             _camera = Camera.main;
             _bombCount = PlayerPrefs.GetInt("BombCount", 2);
             _bombText.text = $"x{_bombCount}";
@@ -42,6 +44,10 @@ namespace Assets.Match.Scripts.Gameplay
             _eraserText.text = $"x{_eraserCount}";
             _chokoCount = PlayerPrefs.GetInt("ChokoCount", 2);
             _chokoText.text = $"x{_chokoCount}";
+
+            if (_bombCount <= 0) _bonusFrames[0].gameObject.GetComponentInParent<Button>().interactable = false;
+            if (_eraserCount <= 0) _bonusFrames[1].gameObject.GetComponentInParent<Button>().interactable = false;
+            if (_chokoCount <= 0) _bonusFrames[2].gameObject.GetComponentInParent<Button>().interactable = false;
         }
 
         public bool IsRocketModeActive() => isRocketActive;
@@ -147,6 +153,7 @@ namespace Assets.Match.Scripts.Gameplay
         private void ActivateRocketBonus(BlockController selectedBlock)
         {
             _chokoCount--;
+            if (_chokoCount <= 0) _bonusFrames[2].gameObject.GetComponentInParent<Button>().interactable = false;
             _chokoText.text = $"x{_chokoCount}";
             PlayerPrefs.SetInt("ChokoCount", _chokoCount);
             foreach (BlockController block in ActivateRocket(_board.Blocks, selectedBlock.GetX))
@@ -165,6 +172,7 @@ namespace Assets.Match.Scripts.Gameplay
         private void ActivateBombBonus(BlockController selectedBlock)
         {
             _bombCount--;
+            if (_bombCount <= 0) _bonusFrames[0].gameObject.GetComponentInParent<Button>().interactable = false;
             _bombText.text = $"x{_bombCount}";
             PlayerPrefs.SetInt("BombCount", _bombCount);
             foreach (BlockController block in ActivateBomb(_board.Blocks, selectedBlock.GetX, selectedBlock.GetY))
@@ -212,6 +220,7 @@ namespace Assets.Match.Scripts.Gameplay
         private void ActivateEraserBonus(BlockController selectedBlock)
         {
             _eraserCount--;
+            if (_eraserCount <= 0) _bonusFrames[1].gameObject.GetComponentInParent<Button>().interactable = false;
             _eraserText.text = $"x{_eraserCount}";
             PlayerPrefs.SetInt("EraserCount", _eraserCount);
             foreach (BlockController block in ActivateEraser(_board.Blocks, selectedBlock.GetY))

@@ -48,7 +48,7 @@ namespace Assets.Match.Scripts.UI.Menu
             _buttonAudioEffect.PlayClickSound();
             _gameMenuAnimation.ForRestartAndContinue();
             _gameController.Restart();
-            _rewardedAds.LoadAd();
+            //_rewardedAds.LoadAd();
         }
 
         private async void ToStartMenu()
